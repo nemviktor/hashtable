@@ -3,6 +3,7 @@ package com.codecool.hashtable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class HashTable<K,V> {
 
@@ -12,15 +13,7 @@ public class HashTable<K,V> {
     private List<List<Entry>> buckets;
 
     private int hashFunc(K key) {
-        int hash = 0;
-        if (key instanceof Number) {
-            hash = ((Number) key).intValue();
-        } else if (key instanceof String) {
-            for (int i=0; i<((String) key).length();i++) {
-                hash += ((String) key).charAt(i);
-            }
-        }
-        return hash;
+        return Objects.hash(key);
     }
 
     public HashTable() {
@@ -35,6 +28,7 @@ public class HashTable<K,V> {
 
     private int getBucketIndexForKey(K key) {
         int index = hashFunc(key) % bucketsSize;
+        System.out.println(index);
         return index;
 //        throw new RuntimeException("FIXME");
     }
