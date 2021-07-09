@@ -59,7 +59,7 @@ public class HashTable<K,V> {
 
         V value = null;
         for (int i=0;i<linkedLength;i++) {
-            if (getBucketAtIndex(index).get(i).getKey().equals(key)) {
+            if (Objects.equals(getBucketAtIndex(index).get(i).getKey(), key)) {
                 value = (V) getBucketAtIndex(index).get(i).getValue();
 //                List<Entry> bucket = getBucketAtIndex(index);
 //                Entry current = findEntryInBucket(key, bucket);
